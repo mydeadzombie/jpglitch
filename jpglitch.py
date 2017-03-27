@@ -3,7 +3,7 @@ import copy
 import random
 import click
 
-from itertools import tee, izip
+from itertools import tee
 from PIL import Image
 
 
@@ -14,7 +14,7 @@ def pairwise(iterable):
     """
     a, b = tee(iterable)
     next(b, None)
-    return izip(a, b)
+    return zip(a, b)
 
 
 class Jpeg(object):
@@ -63,7 +63,7 @@ class Jpeg(object):
         # bytes around if we glitch it so much we break the file.
         new_bytes = copy.copy(self.bytes)
 
-        for i in (xrange(iterations)):
+        for i in (range(iterations)):
             max_index = len(self.bytes) - self.header_length - 4
 
             # The following operations determine where we'll overwrite a value
@@ -129,7 +129,7 @@ def cli(image, amount, seed, iterations, jpg, output):
     jpeg = Jpeg(image_bytes, amount, seed, iterations)
 
     click.echo("\nScrambling your image with the following parameters:")
-    for key, value in jpeg.parameters.iteritems():
+    for key, value in jpeg.parameters.items():
         click.echo(message=key + ': ' + str(value))
 
     if output:
