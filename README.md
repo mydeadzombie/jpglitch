@@ -20,6 +20,7 @@ python jpglitch.py input.jpg
 ``
 
 There are a few optional parameters
+
  Flag 	| Description
 --------|------------
 `-a`, `--amount`		| This determines the hex value that is used to overwrite original values in the image data. Value from 1 to 99
